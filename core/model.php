@@ -5,8 +5,10 @@
 	abstract class Model
 	{
 		protected $pdo;
+		protected $tabName;
+		protected $className;
 
-		function __construct(){
+		public function __construct(){
 			// connexion sur window WAMP
 			if ($_SERVER['HTTP_HOST'] == 'localhost'){
 				$host = 'localhost';
@@ -41,6 +43,10 @@
 				}
 			}
 		}// fin function construct
+
+
+	
+
 
 	}
  ?>

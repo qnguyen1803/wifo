@@ -1,0 +1,1 @@
+<?php echo "Cette page est la page copyleft"; ?>

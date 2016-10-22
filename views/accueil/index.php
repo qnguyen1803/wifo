@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<title>wifo</title>
-</head>
+<?php require "views/head.php"; ?>
 <body>
-	<h2>Cette page est la page view/accueil/index.php</h2>
 	<header>
-		
-		
+		<nav class="navbar navbar-default">
+				<a href="#">Auteur</a>
+				<a href="#">Image</a>
+				<a href="#">Projet</a>
+				<a href="<?=WEBROOT.'accueil'.'/'.'contact'?>">Nous contacter</a>
+				<a href="<?=WEBROOT.'accueil'.'/'.'copyleft'?>">Mentions légales</a>
+				<a href="#">Publier votre projet/ image</a>
+		</nav>
 	</header>
 
-
-
-	<footer>
-		
-	</footer>
-
-
-</body>
-</html>
+<?php require "views/loadScript.php"; ?>
