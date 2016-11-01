@@ -5,7 +5,7 @@
 *
 * 
 */
-class Utilisateur
+class Utilisateur extends Entity
 {	
 	private $_id, $_nom, $_prenom, $_pseudo, $_mdp, $_email, $_sexe, $_favori, $_telephone, $_metier, $_competences, $_description_sup;
 	

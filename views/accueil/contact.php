@@ -1,4 +1,4 @@
-<?php require "views/head.php"; ?>
+<?php include 'views/head.php'; ?>
 
 	<header>
 		

@@ -20,10 +20,18 @@
 			$action = 'index';
 		} 
 	}
+	include "views/head.php";
+	include "views/loadScript.php";
 	
 	include 'core/controller.php';
 	include 'core/model.php';
 	include 'controllers/'.$controller.'_c.php';
+	
+	function chargerClasse($className){
+		include 'entities/'.$className.'.php';
+	}
+
+	spl_autoload_register('chargerClasse');
 
 	define('CONTROLLER', $controller);
 	define('ACTION', $action);

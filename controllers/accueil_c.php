@@ -14,5 +14,6 @@ class Accueil_c extends Controller{
 	public function copyleft(){
 		$this->view('copyleft');
 	}
+
 }
  ?>

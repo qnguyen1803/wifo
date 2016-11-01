@@ -5,36 +5,20 @@
 * ENTITE image
 *
 */
-class Image
+class Image extends Entity
 {	
-	private $_id, $_nom, $_prenom, $_pseudo, $_mdp, $_email, $_sexe, $_favori, $_telephone, $_metier, $_competences, $_description_sup;
-	
-	function __construct($donnees){
-		$this->hydrater($donnees);
-	}
+	private $_id, $_titre, $_description, $_dateDePub, $_format, $_taille, $_note, $_idCategorie, $_idUtilisateur;
 
-	public function hydrater(array $donnees){
-		foreach ($donnees as $key => $value) {
-			$method = 'set'.ucfirst($key);
-			if (method_exists($this, $method)) {
-				$this->$method($value);
-			}
-		}
-	}
-
-	// FUNCTIONS GET
 	public function getId(){return $this->_id;}
-	public function getNom(){return $this->_nom;}
-	public function getPrenom(){return $this->_prenom;}
-	public function getPseudo(){return $this->_pseudo;}
-	public function getMdp(){return $this->_mdp;}
-	public function getEmail(){return $this->_email;}
-	public function getSexe(){return $this->_sexe;}
-	public function getFavori(){return $this->_favori;}
-	public function getTelephone(){return $this->_telephone;}
-	public function getMetier(){return $this->_metier;}
-	public function getCompetences(){return $this->_competences;}
-	public function getDescription_sup(){return $this->sup;}
+	public function getTitre(){return $this->_titre;}
+	public function getDescription(){return $this->_description;}
+	public function getDateDePub(){return $this->_dateDePub;}
+	public function getFormat(){return $this->_format;}
+	public function getTaille(){return $this->_taille;}
+	public function getNote(){return $this->_note;}
+	public function getIdCategorie(){return $this->_idCategorie;}
+	public function getIdUtilisateur(){return $this->_idUtilisateur;}
+
 
 	//FUNCTIONS SET
 	public function setId($id){
@@ -44,55 +28,44 @@ class Image
 		}	
 	}
 
-	public function setNom($nom){
-		if (is_string($nom)) {
-			$this->_nom = $nom;
+	public function setTitre($titre){
+		if (is_string($titre)) {
+			$this->_titre = $titre;
 		} 
 	}
 
-	public function setPrenom($prenom){
-		if (is_string($prenom)) {
-			$this->_prenom = $prenom;
+	public function setDescription($description){
+		if (is_string($description)) {
+			$this->_description = $description;
 		} 
 	}
 
-	public function setPseudo($pseudo){	
-		if (is_string($pseudo)) {
-			$this->_pseudo = $pseudo;
-		}
+	public function getDateDePub($dateDePub){	
+			$this->_dateDePub = $dateDePub;
 	} 
 
-	public function setMdp($mdp){
-		$this->_mdp = $mdp;
+	public function setFormat($format){
+			$this->_format = $format;
 	}
 
-	public function setEmail($email){
-		$this->_email = $email;
+	public function setTaille($taille){
+			$this->_taille = $taille;
 	}
 
-	public function setSexe($sexe){
-		$this->_sexe= $sexe;
+	public function setNote($note){
+		$this->_note = $note;
 	}
-
-	public function setFavori($favori){
-		$this->_favori = $favori;
+	public function setIdCategorie($idCategorie){
+		$idCategorie = (int)$idCategorie;
+		if ($idCategorie > 0) {
+			$this->_idCategorie = $idCategorie;
+		}
 	}
-
-	public function setTelephone($telephone){
-		$this->_telephone = $telephone;
-	}
-
-	public function setMetier($metier){
-
-		$this->_metier= $metier;
-	}
-
-	public function setCompetences($competences){
-		$this->_competences = $competences;
-	}
-
-	public function setDescription_sup($description_sup){
-		$this->_description_sup = $description_sup;
+	public function setIdUtilisateur($idUtilisateur){
+		$idUtilisateur = (int)$idUtilisateur;
+		if ($idUtilisateur > 0) {
+			$this->_idUtilisateur = $idUtilisateur;
+		}
 	}
 }
  ?>
