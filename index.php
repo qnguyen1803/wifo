@@ -25,6 +25,7 @@
 	
 	include 'core/controller.php';
 	include 'core/model.php';
+	include 'core/entity.php';
 	include 'controllers/'.$controller.'_c.php';
 	
 	function chargerClasse($className){

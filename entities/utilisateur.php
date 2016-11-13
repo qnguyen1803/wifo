@@ -7,7 +7,7 @@
 */
 class Utilisateur extends Entity
 {	
-	private $_id, $_nom, $_prenom, $_pseudo, $_mdp, $_email, $_sexe, $_favori, $_telephone, $_metier, $_competences, $_description_sup;
+	private $_id, $_nom, $_prenom, $_pseudo, $_mdp, $_email, $_sexe, $_favori, $_telephone, $_metier, $_competences, $_descriptionSup, $_dateCreation, $_derniereConnexion, $_avatar;
 	
 
 	// FUNCTIONS GET
@@ -17,12 +17,15 @@ class Utilisateur extends Entity
 	public function getPseudo(){return $this->_pseudo;}
 	public function getMdp(){return $this->_mdp;}
 	public function getEmail(){return $this->_email;}
-	public function getSexe(){return $this->sexe;}
+	public function getSexe(){return $this->_sexe;}
 	public function getFavori(){return $this->_favori;}
 	public function getTelephone(){return $this->_telephone;}
 	public function getMetier(){return $this->_metier;}
 	public function getCompetences(){return $this->_competences;}
-	public function getDescription_sup(){return $this->sup;}
+	public function getDescriptionSup(){return $this->_descriptionSup;}
+	public function getDateCreation(){return $this->_dateCreation;}
+	public function getDerniereConnexion(){return $this->_derniereConnexion;}
+	public function getAvatar(){return $this->_avatar;}
 
 	//FUNCTIONS SET
 	public function setId($id){
@@ -79,8 +82,18 @@ class Utilisateur extends Entity
 		$this->_competences = $competences;
 	}
 
-	public function setDescription_sup($description_sup){
-		$this->_description_sup = $description_sup;
+	public function setDescriptionSup($descriptionSup){
+		$this->_descriptionSup = $descriptionSup;
+	}
+
+	public function setDateCreation($dateCreation){
+		$this->_dateCreation = $dateCreation;
+	}
+	public function setDerniereConnexion($derniereConnexion){
+		$this->_derniereConnexion = $derniereConnexion;
+	}
+	public function setAvatar($avatar){
+		$this->_avatar = $avatar;
 	}
 }
  ?>

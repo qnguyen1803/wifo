@@ -1,6 +1,7 @@
 <?php include 'views/head.php'; ?>
 
 	<header>
+		<?php include 'views/navigation.php' ?>
 		
 	</header>
 	<section class="jumbotron">

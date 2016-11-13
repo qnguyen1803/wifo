@@ -1,15 +1,15 @@
 <div class="register">
-	<form id="inscription" class="form-horizontal" role="form" data-toggle='validator' method="post" action="#">
+	<form id="inscription" class="form-horizontal" role="form" data-toggle='validator' method="post" action="">
 			
 		<fieldset class="container">
-			<legend><h2>INSCRIPTION</h2></legend>
+			<legend><h2>INSCRIPTION</h2>* Obligatoire de remplir tous les champs</legend> 
 
 				<!-- PSEUDO -->
 				<div class="form-group">
 					<label for="pseudo" class="col-sm-2 control-label">Pseudo</label>
 					<div class="col-sm-6 inputGroupContainer">
 						<div class="input-group">
-							<input type="text" class="form-control" name="pseudo" id="inscription_pseudo">
+							<input type="text" class="form-control" name="pseudo_inscription" id="inscription_pseudo">
 						</div>
 					</div>
 				</div>
@@ -19,7 +19,7 @@
 					<label for="email" class="col-sm-2 control-label">Email</label>
 					<div class="col-sm-6 inputGroupContainer">
 						<div class="input-group">
-							<input type="email" class="form-control" name="email" id="connexion_email">
+							<input type="email" class="form-control" name="email_inscription" id="inscription _email">
 						</div>
 					</div>
 				</div>
@@ -29,7 +29,7 @@
 					<label for="mdp" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-4 inputGroupContainer">
 						<div class="input-group">
-							<input type="password" class="form-control" name="mdp" id="connexion_mdp">
+							<input type="password" class="form-control" name="mdp_inscription" id="inscription_mdp">
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@
 					<label for="mdp2" class="col-sm-2 control-label">Password</label>
 					<div class="col-sm-4 inputGroupContainer">
 						<div class="input-group">
-							<input type="password" class="form-control" name="mdp2" id="connexion_mdp2">
+							<input type="password" class="form-control" name="mdp2_inscription" id="inscription_mdp2">
 						</div>
 					</div>
 				</div>
@@ -47,13 +47,13 @@
 	<!-- ///////////////////////////
 		CREER VOTRE PROFIL
 	/////////////////////////////--> 
-				<h2>CREER VOTRE PROFIL </h2>
+	<legend><h2>CREER VOTRE PROFIL </h2> * facultatif </legend>
 				<!-- NOM -->
 				<div class="form-group">
 					<label for="nom" class="col-sm-2 control-label">Nom</label>
 					<div class="col-sm-6 inputGroupContainer">
 						<div class="input-group">
-							<input type="text" class="form-control" name="nom" id="inscription_nom">
+							<input type="text" class="form-control" name="nom_inscription" id="inscription_nom">
 						</div>
 					</div>
 				</div>
@@ -63,19 +63,19 @@
 					<label for="prenom" class="col-sm-2 control-label">Prenom</label>
 					<div class="col-sm-6 inputGroupContainer">
 						<div class="input-group">
-							<input type="text" class="form-control" name="prenom" id="inscription_prenom">
+							<input type="text" class="form-control" name="prenom_inscription" id="inscription_prenom">
 						</div>
 					</div>
 				</div>
 
 				<!-- SEXE -->
 				<div class="form-group">
-					<label for="prenom" class="col-sm-2 control-label">Vous êtes </label>
+					<label for="sexe" class="col-sm-2 control-label">Vous êtes </label>
 					<div class="col-sm-6 inputGroupContainer">
 						<div class="radio">
 							Homme <i class="fa fa-male"></i>
 							<label> 
-						   		<input type="radio" value="m" name="sexe" id="inscription_homme">
+						   		<input type="radio" value="m" name="sexe" id="inscription_homme" checked="checked">
 						   	</label>
 						</div>
 						<div class="radio">
@@ -118,6 +118,16 @@
 					</div>
 				</div>
 
+				<!-- FAVORI -->
+				<div class="form-group">
+					<label for="favori" class="col-sm-2 control-label">Favories</label>
+					<div class="col-sm-6 inputGroupContainer">
+						<div class="input-group">
+							<input type="text" class="form-control" name="favori" id="inscription_favori">
+						</div>
+					</div>
+				</div>
+
 				<!-- DESCRIPTION SUPLEMENTAIRE -->
 				<div class="form-group">
 					<label for="description_sup" class="col-sm-2 control-label">Description supplémentaire</label>
@@ -127,6 +137,7 @@
 						</div>
 					</div>
 				</div>
+				
 
 
 				<!-- button -->
@@ -139,4 +150,5 @@
 		</fieldset>
 	</form>
 </div>
+
 

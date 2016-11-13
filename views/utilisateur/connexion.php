@@ -36,40 +36,44 @@
 	</form>
 </div>
 
+<script type="text/javascript">
+	$(document).ready(function(){
+		
+
+	})
+	// ici je mets les codes du validator form
+
+
+</script>
+
 <!-- <script type="text/javascript">
 	$(document).ready(function() {
-	 	$('#connexion').submit(
-	 		function(event){
+	 	$('#connexion').submit(function(event){
 	 		event.preventDefault();
-	 		$donnees = $(this).serialize();
-	 		console.log($donnees);
-	 		submitForm();
+	 		// var data = $(this).serialize();
+	 		var email = $('#connexion_email').val();
+	 		var mdp = $('#connexion_mdp').val();
+	 		console.log(email);
+	 		console.log(mdp);
+
+
+	 		// console.log (data);
+
+	 		$.post(
+	 			'<?php WEBROOT.'utilisateur/connexion'; ?>',
+	 			{'email':email , 'mdp':mdp},
+	 			function(blabla){
+	 				// debugger;
+	 				alert('haha');
+	 				alert(blabla);
+	 			},
+	 			'html'
+
+	 		)
 
 	 	});
 
-	 	function submitForm(){
-	 		 var email = $('#connexion_email').val();
-	 		 var mdp = $('#connexion_mdp').val();
-
-
-	 		$.ajax({
-	 			type: "POST",
-	 			url: ,
-	 			data: {
-		 			email : email,
-		 			mdp: mdp
-	 			},
-	 			success: function(data){
-	 				console.log('success');
-	 			},
-
-	 			error: function(){
-	 				console.log('error');
-	 			}
-
-	 		})
-	 	}
-	})
+	})// fin document ready
 </script> -->
 
 

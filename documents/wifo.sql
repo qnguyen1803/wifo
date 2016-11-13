@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Sam 22 Octobre 2016 à 11:18
+-- Généré le :  Dim 13 Novembre 2016 à 18:28
 -- Version du serveur :  5.7.11
 -- Version de PHP :  5.6.19
 
@@ -129,8 +129,20 @@ CREATE TABLE `utilisateur` (
   `telephone` int(11) DEFAULT NULL,
   `metier` varchar(45) DEFAULT NULL,
   `competences` varchar(255) DEFAULT NULL,
-  `descriptionSup` varchar(255) DEFAULT NULL
+  `descriptionSup` varchar(255) DEFAULT NULL,
+  `dateCreation` date NOT NULL,
+  `derniereConnexion` date NOT NULL,
+  `avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `utilisateur`
+--
+
+INSERT INTO `utilisateur` (`id`, `nom`, `prenom`, `pseudo`, `mdp`, `email`, `sexe`, `favori`, `telephone`, `metier`, `competences`, `descriptionSup`, `dateCreation`, `derniereConnexion`, `avatar`) VALUES
+(2, 'NGUYEN', 'Quang Huy', 'LALA', 'b1c3ebcac0f2a9dae6b014515b3a51379cb20d04', 'ratataouille1803@yahoo.com.vn', 'm', 'Voyager', 646314568, 'Etudiant', 'Js, Photoshop', 'Je suis passionné du développement web', '2016-11-11', '2016-11-11', 'webroot/user_repository/avatar/avatar-default.png'),
+(5, 'lele', 'le', 'nguyen', 'b1c3ebcac0f2a9dae6b014515b3a51379cb20d04', 'quanghuy.18031992@gmail.com', 'm', '0123455667', 123455667, 'lolo', 'hoho', 'haha', '2016-11-12', '2016-11-12', 'webroot/user_repository/avatar/5.jpg'),
+(6, '', '', 'nguyen quang huy', 'b1c3ebcac0f2a9dae6b014515b3a51379cb20d04', 'quanghuy.18031992@gmail.co', 'm', '', 0, '', '', '', '2016-11-13', '2016-11-13', 'webroot/user_repository/avatar/6.jpg');
 
 --
 -- Index pour les tables exportées
@@ -216,7 +228,7 @@ ALTER TABLE `projet`
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

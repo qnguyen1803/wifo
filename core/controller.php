@@ -3,7 +3,11 @@
 * 
 */
 abstract class Controller
-{
+{	
+	// public function __construct($foo = null)
+	// {
+	// 	$this->foo = $foo;
+	// }
 	protected function view($fichier = ACTION){
 		$fichier = 'views/'.CONTROLLER.'/'.ACTION.'.php';
 		if (!is_file($fichier)) {

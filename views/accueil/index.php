@@ -1,33 +1,9 @@
-<body>
+
 	<header>
 		<!-- NAVIGATION -->
-		
-		<nav class="navbar-header">
-			<a class="navbar-brand" href="#">Auteur</a>
-			<a class="navbar-brand" href="#">Image</a>
-			<a class="navbar-brand" href="#">Projet</a>
-			<a class="navbar-brand" href="<?=WEBROOT.'accueil'.'/'.'contact'?>">Nous contacter</a>
-			<a class="navbar-brand" href="<?=WEBROOT.'accueil'.'/'.'copyleft'?>">Mentions légales</a>
-			<a class="navbar-brand" href="#">Publier votre projet/ image</a>
-		</nav>
-		
-
-		<!-- CONNEXION FORM -->
-		<div>
-			<a id='open_connexion' href="#">Connexion</a>
-			<a href="<?=WEBROOT.'utilisateur'.'/inscription'?>">Inscription</a>
-		</div>
+		<?php include 'views/navigation.php';  ?>
 		
 	</header>
-	<?php 
-	// #connexion_form
-	// #email
-	// #mdp
-	// #connexion_but
-
-
-	 ?>
-
 	 <script type="text/javascript" src="webroot/bpopup-master/jquery.bpopup.min.js"></script>
 	 <script type="text/javascript">
 	 	$(document).ready(function(){
