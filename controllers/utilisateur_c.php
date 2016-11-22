@@ -1,4 +1,4 @@
-<?php 
+	<?php 
 /**
 * 
 */
@@ -7,11 +7,8 @@ class Utilisateur_c extends Controller{
 
 	public function connexion(){
 		session_start();
+		$_SESSION['connexion_erreur'] = "";
 		//acces unique a la personne non connecté
-		if (isset($_SESSION['pseudo'])) {
-		 	echo "<div id='already_connected'> Attention: Vous etes deja connectés</div>";
-		} 
-			$this->view('connexion');
 		
 		// si l'utilsateur clique sur le bouton se connecter
 		if (isset($_POST['btn_connexion'])) {
@@ -24,18 +21,20 @@ class Utilisateur_c extends Controller{
 				//verifier si la personne existe dans la bdd
 
 				$perso = $this->model('utilisateur_m')->connexion($email, $mdp);
-				var_dump($perso);
 				
 				// si la personne n'existe pas
 				 if (!$perso) {
-				 	echo "email ou mdp n'est pas correct ";
+				 	$_SESSION['connexion_erreur'] = "email ou mdp n'est pas correct ";
 				 } else {
 					$_SESSION['perso'] = new Utilisateur($perso); 
-					echo "email et mdp correct";
-					echo "<meta http-equiv=refresh content=1;url=".WEBROOT."utilisateur/tabDeBord".">";	
+					// echo "<meta http-equiv=refresh content=1;url=".WEBROOT."utilisateur/tabDeBord".">";
+					header('Location: '.WEBROOT."utilisateur/tabDeBord");
+					
 				}
 			}
-		} 		
+		} 
+
+		$this->view('connexion');		
 	}// fin connexion()
 
 	public function deconnexion(){
@@ -56,12 +55,6 @@ class Utilisateur_c extends Controller{
 	public function inscription(){
 		session_start();
 		// acces unique a la personne non connectée
-		if (isset($_SESSION['id'])) {
-			echo "Attention: Vous etes déjà connectés";
-		} else {
-			$this->view('inscription');
-		}
-
 		
 		if (isset($_POST['btn_inscription'])) {
 			// si les 4 premiers champs sont remplis
@@ -107,6 +100,12 @@ class Utilisateur_c extends Controller{
 					}
 			}
 	
+		}
+
+		if (isset($_SESSION['id'])) {
+			echo "Attention: Vous etes déjà connectés";
+		} else {
+			$this->view('inscription');
 		}	
 	}// fin inscription()
 }// fin class

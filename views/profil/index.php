@@ -6,7 +6,6 @@
 </header>
 <section class="jumbotron">
 	<div id="info_user" class="container">
-		
 		<img style="width: 200px;height: 200px;" src="<?=WEBROOT.$_SESSION['perso']->getAvatar() ?>">
 		<p><?php echo $_SESSION['perso']->getPrenom().' '.$_SESSION['perso']->getNom(); ?></p>
 		<p><?php echo "<b> Date d'inscription</b>: ".$_SESSION['perso']->getDateCreation(); ?></p>

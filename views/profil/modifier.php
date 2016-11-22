@@ -20,11 +20,11 @@
 			</div>
 
 			<div class="form-group">
-					<label class="col-sm-2 control-label"></label>
-					<div class="col-sm-8">
-						<button type="submit" class="btn btn-primary" name="btn_avatar" id="avatar_submit"> Enregister </button>
-					</div>
+				<label class="col-sm-2 control-label"></label>
+				<div class="col-sm-8">
+					<button type="submit" class="btn btn-primary" name="btn_avatar" id="avatar_submit"> Enregister </button>
 				</div>
+			</div>
 		</fieldset>
 	</form>
 

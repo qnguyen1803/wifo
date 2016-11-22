@@ -7,14 +7,13 @@
 */
 class Image extends Entity
 {	
-	private $_id, $_titre, $_description, $_dateDePub, $_format, $_taille, $_note, $_idCategorie, $_idUtilisateur;
+	private $_id, $_titre, $_description, $_dateDePub, $_repository, $_note, $_idCategorie, $_idUtilisateur;
 
 	public function getId(){return $this->_id;}
 	public function getTitre(){return $this->_titre;}
 	public function getDescription(){return $this->_description;}
 	public function getDateDePub(){return $this->_dateDePub;}
-	public function getFormat(){return $this->_format;}
-	public function getTaille(){return $this->_taille;}
+	public function getRepository(){return $this->_repository;}
 	public function getNote(){return $this->_note;}
 	public function getIdCategorie(){return $this->_idCategorie;}
 	public function getIdUtilisateur(){return $this->_idUtilisateur;}
@@ -40,16 +39,12 @@ class Image extends Entity
 		} 
 	}
 
-	public function getDateDePub($dateDePub){	
+	public function setDateDePub($dateDePub){	
 			$this->_dateDePub = $dateDePub;
 	} 
 
-	public function setFormat($format){
-			$this->_format = $format;
-	}
-
-	public function setTaille($taille){
-			$this->_taille = $taille;
+	public function setRepository($repository){
+			$this->_repository = $repository;
 	}
 
 	public function setNote($note){

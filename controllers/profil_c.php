@@ -22,8 +22,8 @@ class Profil_c extends Controller{
 	}
 
 	/**
-	* @fontion changer photo profil
-	* @fonction changer les infos du profil
+	* @--fontion changer photo profil
+	* @--fonction changer les infos du profil
 	*/
 	public function profilChange(){
 		if (!isset($_SESSION['perso'])) {
@@ -31,6 +31,8 @@ class Profil_c extends Controller{
 		} else {
 
 			$utilisateur_m = $this->model('utilisateur_m');
+
+			// changement d'avatar
 			if (isset($_POST['btn_avatar'])) {
 				if (!empty($_FILES['avatar'])) {
 
@@ -43,7 +45,7 @@ class Profil_c extends Controller{
 					if ($_FILES['avatar']['size'] > 1048576) $error = 'le fichier est trop lourd';
 
 					//verifier l'extension de l'image
-					$extensions_valides = ['jpg', 'png', 'gif', 'jpeg'];
+					$extensions_valides = ['jpg', 'png', 'gif', 'jpeg', 'svg'];
 					$extension_file = strtolower(  substr(  strrchr($_FILES['avatar']['name'], '.')  ,1));
 					if (!in_array($extension_file, $extensions_valides)) $error = "l'extension n'est pas supporté" ;
 					echo $error.'</br>';
@@ -56,75 +58,71 @@ class Profil_c extends Controller{
 
 						if ($result) {
 							echo "Votre changement est bien pris en compte";
-							$utilisateur_m->update('avatar',$destination, $_SESSION['perso']);		
-
+							$utilisateur_m->update('avatar',$destination, $_SESSION['perso']);	
+							$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 						}
 					}
-
-
-					// updater la bdd
-
-
 				} else {
 					echo "Vous avez pas encore choisi votre photo";
 				}
+			}// fin POST['btn_avatar']
 
 				
-				
-
-				// // verifier les dimensions de l'image
-				// $image_size = getimagesize($_FILE['avatar']['tmp_name']);
-				// var_dump($image_size);
-				// if ($image_size[0] > 1000 OR $image_size[1]> 1000) echo "la taille de l'image est trop grande" ;
-
-				
-			// }
-
+			// changement des infos profil
 			if (isset($_POST['btn_changed_profil'])) {
+				
 				if (!empty($_POST['nom'])) {
 					$nom = htmlspecialchars($_POST['nom']);
 					$utilisateur_m->update('nom', $nom, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['prenom'])) {
 					$prenom = htmlspecialchars($_POST['prenom']);
 					$utilisateur_m->update('prenom', $prenom, $_SESSION['perso']);
-				}
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
+				} 
 
 				if (isset($_POST['sexe'])) {
 					$sexe = htmlspecialchars($_POST['sexe']);
 					$utilisateur_m->update('sexe', $sexe, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['telephone'])) {
 					$telephone = htmlspecialchars($_POST['telephone']);
 					$utilisateur_m->update('telephone', $telephone, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['metier'])) {
 					$metier = htmlspecialchars($_POST['metier']);
 					$utilisateur_m->update('metier', $metier, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['competences'])) {
 					$competences = htmlspecialchars($_POST['competences']);
 					$utilisateur_m->update('competences', $competences, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['favori'])) {
 					$favori = htmlspecialchars($_POST['favori']);
 					$utilisateur_m->update('favori', $telephone, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
 				}
 
 				if (!empty($_POST['description_sup'])) {
 					$description_sup = htmlspecialchars($_POST['description_sup']);
 					$utilisateur_m->update('descriptionSup', $description_sup, $_SESSION['perso']);
+					$_SESSION['perso'] = $utilisateur_m->get($_SESSION['perso']->getId());
+						
 				}
 
 				echo "Votre changement est bien enregistré";
 
-				}
-			}
+			}// fin if $_POST['btn_changed_profil']
 		}// fin else
 	}// fin function profilChagne
 

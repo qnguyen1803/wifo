@@ -6,41 +6,41 @@
 
 class Commentaire extends Entity
 {	
-	private private $_id, $_contenu, $_date, $_idUtilisateur;
+	private $_id, $_nomPrenom, $_contenu, $_dateDePub, $_idImage, $_idProjet;
 
 	// FUNCTIONS GET
 	public function getId(){return $this->_id;}
+	public function getNomPrenom(){return $this->_nomPrenom;}
 	public function getContenu(){return $this->_contenu;}
-	public function getDate(){return $this->_date;}
-	public function getIdUtilisateur(){return $this->_idUtilisateur;}
+	public function getDateDePub(){return $this->_dateDePub;}
+	public function getIdImage(){return $this->_idImage;}
+	public function getIdProjet(){return $this->_idProjet;}
 
 
 	//FUNCTIONS SET
 	public function setId($id){
-		$id = (int)$id;
-		if ($id > 0) {
-			$this->_id = $id;
-		}	
+		$this->_id = $id;
+	}
+
+	public function setNomPrenom($nomPrenom){
+		$this->_nomPrenom = $nomPrenom;
 	}
 
 	public function setContenu($contenu){
-		if (is_string($contenu)) {
-			$this->_contenu = $contenu;
-		} 
+		$this->_contenu = $contenu;
 	}
 
-	public function setDate($date){
-		if (is_string($date)) {
-			$this->_date = $date;
-		} 
+	public function setDateDePub($dateDePub){
+		$this->_dateDePub = $dateDePub;
 	}
 
+	public function setIdImage($idImage){
+		$this->_idImage = $idImage;
 	}
-	public function setIdUtilisateur($idUtilisateur){
-		$idUtilisateur = (int)$idUtilisateur;
-		if ($idUtilisateur > 0) {
-			$this->_idUtilisateur = $idUtilisateur;
-		}
+
+	public function setProjet($idProjet){
+		$this->_idProjet = $idProjet;
 	}
+
 }
  ?>

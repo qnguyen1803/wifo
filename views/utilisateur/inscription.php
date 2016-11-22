@@ -1,8 +1,13 @@
+<header>
+		<!-- NAVIGATION -->
+		<?php include 'views/navigation.php';  ?>	
+</header>
+
 <div class="register">
-	<form id="inscription" class="form-horizontal" role="form" data-toggle='validator' method="post" action="">
+	<form id="inscription" class="form-horizontal" role="form" data-toggle='validator' method="post" action="<?=WEBROOT.'utilisateur/inscription' ?>">
 			
 		<fieldset class="container">
-			<legend><h2>INSCRIPTION</h2>* Obligatoire de remplir tous les champs</legend> 
+			<legend><h2 class="col-sm-3">INSCRIPTION</h2><span>* Obligatoire de remplir tous les champs</span></legend> 
 
 				<!-- PSEUDO -->
 				<div class="form-group">
@@ -47,7 +52,7 @@
 	<!-- ///////////////////////////
 		CREER VOTRE PROFIL
 	/////////////////////////////--> 
-	<legend><h2>CREER VOTRE PROFIL </h2> * facultatif </legend>
+	<legend><h2 class="col-sm-5">CREER VOTRE PROFIL </h2> * facultatif </legend>
 				<!-- NOM -->
 				<div class="form-group">
 					<label for="nom" class="col-sm-2 control-label">Nom</label>
@@ -144,7 +149,7 @@
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-8">
-						<button type="submit" class="btn btn-primary" name="btn_inscription" id="inscription_submit"> S'inscrire </button>
+						<button type="submit" class="btn btn-warning" name="btn_inscription" id="inscription_submit"> S'inscrire </button>
 					</div>
 				</div>
 		</fieldset>

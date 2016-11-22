@@ -20,8 +20,7 @@
 			$action = 'index';
 		} 
 	}
-	include "views/head.php";
-	include "views/loadScript.php";
+
 	
 	include 'core/controller.php';
 	include 'core/model.php';

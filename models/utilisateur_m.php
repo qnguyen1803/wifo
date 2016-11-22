@@ -44,8 +44,12 @@ class Utilisateur_m extends Model
 		return $res;
 	}
 
-	public function get(){
-
+	public function get($id){
+		$q = $this->pdo->prepare('SELECT * FROM utilisateur WHERE id=:id');
+		$q->bindValue(':id', $id, PDO::PARAM_INT);
+		$q->execute();
+		$donnees = $q->fetch(PDO::FETCH_ASSOC);
+		return new Utilisateur($donnees);
 	}
 
 	public function getList(){
