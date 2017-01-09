@@ -6,11 +6,13 @@
 
 class Commentaire extends Entity
 {	
-	private $_id, $_nomPrenom, $_contenu, $_dateDePub, $_idImage, $_idProjet;
+	private $_id, $_idUtilisateur, $_vote, $_sujet, $_contenu, $_dateDePub, $_idImage, $_idProjet;
 
 	// FUNCTIONS GET
 	public function getId(){return $this->_id;}
-	public function getNomPrenom(){return $this->_nomPrenom;}
+	public function getIdUtilisateur(){return $this->_idUtilisateur;}
+	public function getSujet(){return $this->_sujet;}
+	public function getVote(){return $this->_vote;}
 	public function getContenu(){return $this->_contenu;}
 	public function getDateDePub(){return $this->_dateDePub;}
 	public function getIdImage(){return $this->_idImage;}
@@ -22,8 +24,16 @@ class Commentaire extends Entity
 		$this->_id = $id;
 	}
 
-	public function setNomPrenom($nomPrenom){
-		$this->_nomPrenom = $nomPrenom;
+	public function setIdUtilisateur($idUtilisateur){
+		$this->_idUtilisateur = $idUtilisateur;
+	}
+
+	public function setVote($vote){
+		$this->_vote = $vote;
+	}
+
+	public function setSujet($sujet){
+		$this->_sujet = $sujet;
 	}
 
 	public function setContenu($contenu){

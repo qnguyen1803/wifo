@@ -1,167 +1,100 @@
-
-	<header>
-		<!-- NAVIGATION -->
-		<?php include 'views/navigation.php';  ?>	
-	</header>
-	<?php include 'views/loadScript.php';  ?>	
-
+<link rel="stylesheet" type="text/css" href="<?= WEBROOT.'webroot/css/accueil.css'?>">
 	 <div class="banner">
 		<div class="container">
 			<div class="span_1_of_1">
 			    <h2>Photos, illustrations by<br> Creatives all over the world.</h2>
 
 			    <div class="search">
-			      <ul class="nav1">
-		            <li id="search">
-
 		            <!-- search form -->
-						<form id="recherche_box" action="<?=WEBROOT.'accueil/search' ?>" method="get">
+					<div class="search-form col-sm-12">
+                        <form action="<?=WEBROOT.'accueil/search' ?>" method="post">
+                        		
+                            <div class="input-group col-sm-12">
+                                <input type="text" placeholder="Ecrire votre mot clé ..." name="search-content" class="form-control input-lg">
 
-							<input type="text" name="search_text" id="search_text" placeholder="Search"/>
-							<input type="submit" name="search_button" id="search_button">
-						
-							<select id="options">
-								<option value='image'>Image</option>
-								<option value='projet'>Projet</option>
+                                <div class="input-group-btn">
+                                    <button class="btn btn-lg btn-primary" type="submit" name="search-btn" id="search-btn">
+                                        Search
+                                    </button>
+                                </div>
+                            </div>
+
+                            <select name="search-param" class="selectpicker col-sm-12">
+									<option value="image">Image</option>
+									<option value="projet">Projet</option>
 							</select>
-						</form>
+                        </form>
+                    </div>
 					<!-- END search form -->
-
-	              </ul>
 	            </div>
 
 			</div>
 		</div>
 	</div>
-	
+	<!-- LISTE IMAGES -->
 	<div class="grid_1">
-		<h3>Over 42 Million Stock Images, Vectors, Footage and Audio Clips</h3>
-		<div class="tags">
-			<h4 class="tag_head">Similar Images</h4>
-			<ul class="tags_images">
-				<li><a href="#"><img src="<?=WEBROOT."webroot/images/pic40.jpg"?>" class="img-responsive" alt=""/></a></li>
-
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic41.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic42.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic43.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li class="last"><a href="#"><img src="<?=WEBROOT.'webroot/images/pic40.jpg' ?>" class="img-responsive" alt=""/></a></li>
-			
-			<div class="clearfix"> </div>
-		 	</ul>
-		</div>
-
-		<div class="tags">
-			<h4 class="tag_head">Similar Images</h4>
-			<ul class="tags_images">
-				<li><a href="#"><img src="<?=WEBROOT."webroot/images/pic40.jpg"?>" class="img-responsive" alt=""/></a></li>
-
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic41.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic42.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic43.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li class="last"><a href="#"><img src="<?=WEBROOT.'webroot/images/pic40.jpg' ?>" class="img-responsive" alt=""/></a></li>
-			
-			<div class="clearfix"> </div>
-		 	</ul>
-		</div>
-
-		<div class="tags">
-			<h4 class="tag_head">Similar Images</h4>
-			<ul class="tags_images">
-				<li><a href="#"><img src="<?=WEBROOT."webroot/images/pic40.jpg"?>" class="img-responsive" alt=""/></a></li>
-
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic41.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic42.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic43.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li class="last"><a href="#"><img src="<?=WEBROOT.'webroot/images/pic40.jpg' ?>" class="img-responsive" alt=""/></a></li>
-			
-			<div class="clearfix"> </div>
-		 	</ul>
-		</div>
-		
-		<div class="tags">
-			<h4 class="tag_head">Similar Images</h4>
-			<ul class="tags_images">
-				<li><a href="#"><img src="<?=WEBROOT."webroot/images/pic40.jpg"?>" class="img-responsive" alt=""/></a></li>
-
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic41.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic42.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li><a href="#"><img src="<?=WEBROOT.'webroot/images/pic43.jpg' ?>" class="img-responsive" alt=""/></a></li>
-				<li class="last"><a href="#"><img src="<?=WEBROOT.'webroot/images/pic40.jpg' ?>" class="img-responsive" alt=""/></a></li>
-			
-			<div class="clearfix"> </div>
-		 	</ul>
-		</div>
-
-
-	</div>
-    <div class="copyrights">Collect from <a href="http://www.cssmoban.com/" >企业网站模板</a></div>
-	<div class="grid_2">
-		<div class="container">
-			<div class="col-md-3 col_2">
-				<h3>Stock Photo<br>Categories</h3>
-			</div>
-			<div class="col-md-9 col_5">
-				<div class="col_1_of_5 span_1_of_5">
-					<ul class="list1">
-					    <li><a href="stock.html">Abstract</a></li>
-			            <li><a href="stock.html">Animals/Wildlife</a></li>
-			            <li><a href="stock.html">The Arts</a></li>
-			            <li><a href="stock.html">Backgrounds/Textures</a></li>
-			            <li><a href="stock.html">Beauty/Fashion</a></li>
-			            <li><a href="stock.html">Buildings/Landmarks</a></li>
-		            </ul>
-				</div>
-				<div class="col_1_of_5 span_1_of_5">
-					<ul class="list1">
-					    <li><a href="stock.html">Business/Finance</a></li>
-			            <li><a href="stock.html">Celebrities</a></li>
-			            <li><a href="stock.html">Editorial</a></li>
-			            <li><a href="stock.html">Education</a></li>
-			            <li><a href="stock.html">Food and Drink</a></li>
-			            <li><a href="stock.html">Healthcare/Medical</a></li>
-		            </ul>
-				</div>
-				<div class="col_1_of_5 span_1_of_5">
-					<ul class="list1">
-					    <li><a href="stock.html">Holidays</a></li>
-			            <li><a href="stock.html">Illustrations/Clip-Art</a></li>
-			            <li><a href="stock.html">Industrial</a></li>
-			            <li><a href="stock.html">Interiors</a></li>
-			            <li><a href="stock.html">Miscellaneous</a></li>
-			            <li><a href="stock.html">Model Released Only</a></li>
-		            </ul>
-				</div>
-				<div class="col_1_of_5 span_1_of_5">
-					<ul class="list1">
-					    <li><a href="stock.html">Nature</a></li>
-			            <li><a href="stock.html">Objects</a></li>
-			            <li><a href="stock.html">Parks/Outdoor</a></li>
-			            <li><a href="stock.html">People</a></li>
-			            <li><a href="stock.html">Religion</a></li>
-			            <li><a href="stock.html">Science</a></li>
-		            </ul>
-				</div>
-				<div class="clearfix"></div>
-			</div>
-			<div class="clearfix"> </div>
-		</div>
-	</div>
-	<div class="grid_3">
-	  <div class="container">
-	  	 <ul id="footer-links">
-			<li><a href="#">Terms of Use</a></li>
-			<li><a href="#">Royalty Free License</a></li>
-			<li><a href="#">Extended License</a></li>
-			<li><a href="#">Privacy</a></li>
-			<li><a href="support.html">Support</a></li>
-			<li><a href="about.html">About Us</a></li>
-			<li><a href="faq.html">FAQ</a></li>
-			<li><a href="#">Categories</a></li>
-         </ul>
-         <p>Copyright &copy; 2015.WIFO
-	 			 <a href="http://www.cssmoban.com/" target="_blank" title="wifo">wifo</a> - Collect from <a href="http://www.cssmoban.com/" title="wifo" target="_blank">wifo</a>
-			 	 </p>
+		<h2> Dernières images publiées </h2>
+		<hr>
+		<div class="row">
+			<?php foreach ($this->vars['listImagesRecents'] as $key => $value) { ?>
+				<div class="col-md-3">
+			    	<div class="thumbnail">
+			        	<a href="<?=WEBROOT.'image/imageDetail/'.$value->getId()  ?>" target="_blank">
+			         	 	<img src="<?=WEBROOT.$this->vars['tabImgPaths'][$key]?>" alt="Lights" style="width:100%">
+					        <div class="caption">
+					        	<strong style="color: blue"><?=$value->getTitre()  ?> </strong><i> publié par </i>
+					        	<strong><?=$this->vars['tabImagesAuthor'][$key]->getPseudo() ?></strong>
+					        </div>
+			        	</a>
+			      	</div>
+			    </div>
+			<?php } ?>
 	  </div>
-	</div>
+
+	  <br><br>
+
+	 <!--  LISTE PROJETS -->
+	  <h2> Derniers projets </h2>
+		<hr>
+		<div class="row">
+			<?php foreach ($this->vars['listProjetsRecents'] as $key => $value) { ?>
+				<div class="col-md-3">
+			    	<div class="thumbnail">
+			        	<a href="<?=WEBROOT.'projet/projetDetail/'.$value->getId()  ?>" target="_blank">
+			         	 	<img src="<?=WEBROOT.$value->getImageIllustration()?>" alt="Lights" style="width:100%">
+					        <div class="caption">
+					        	<strong style="text-align: center;"><?=$value->getTitre()  ?> </strong>
+					        	<i> publié par </i>
+					        	<strong><?=$this->vars['tabProjectsAuthor'][$key]->getPseudo() ?></strong>
+					        </div>
+			        	</a>
+			      	</div>
+			    </div>
+			<?php } ?>
+	  </div>
+
+	  <br><br>
+
+	  <!-- LISTE AUTEURS -->
+	  <h2> Derniers auteurs </h2>
+		<hr>
+		<div class="row">
+			<?php foreach ($this->vars['listUsersRecents'] as $key => $value) { ?>
+				<div class="col-sm-3">
+					<div class="col-md-6" >
+				    	<div class="thumbnail">
+				    		<img class="img-responsive user-photo" src="<?=WEBROOT.$value->getAvatar() ?>">
+				      	</div>
+			      	</div>
+			      	<div class="col-md-6" style="border: 1px solid #ccc;">
+			      		<p><strong>Wifo - user</strong></p>
+			      		<a href="<?=WEBROOT.'profil/index/'.$value->getPseudo() ?>"><?=$value->getPseudo() ?></a>
+			      		<p><strong> Intégration </strong></p>
+			      		<p><?=$value->getDateCreation() ?></p>
+			      	</div>
+			    </div>
+			<?php } ?>
+	  </div>
+  </div>
 
 

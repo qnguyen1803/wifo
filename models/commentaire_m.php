@@ -10,8 +10,10 @@ class Commentaire_m extends Model{
 	* 
 	*/
 	public function add(Commentaire $comment){
-		$q = $this->pdo->prepare("INSERT INTO commentaire(nomPrenom, contenu, dateDePub, idImage, idProjet) VALUES (:nomPrenom, :contenu, :dateDePub, :idImage, :idProjet)");
-		$q->bindValue(':nomPrenom', $comment->getNomPrenom(), PDO::PARAM_STR);
+		$q = $this->pdo->prepare("INSERT INTO commentaire(sujet, idUtilisateur, vote, contenu, dateDePub, idImage, idProjet) VALUES (:sujet, :idUtilisateur, :vote, :contenu, :dateDePub, :idImage, :idProjet)");
+		$q->bindValue(':sujet', $comment->getSujet(), PDO::PARAM_STR);
+		$q->bindValue(':idUtilisateur', $comment->getIdUtilisateur(), PDO::PARAM_INT);
+		$q->bindValue(':vote', $comment->getVote(), PDO::PARAM_INT);
 		$q->bindValue(':contenu', $comment->getContenu(), PDO::PARAM_STR);
 		$q->bindValue(':dateDePub', $comment->getDateDePub());
 		$q->bindValue(':idImage', $comment->getIdImage(), PDO::PARAM_INT);
@@ -29,17 +31,15 @@ class Commentaire_m extends Model{
 	* @param $id
 	* 
 	*/
-	public function getList($idProprietaire, $column){
+	public function getList($idImage, $column){
 		$comments = [];
 		$q = $this->pdo->prepare('SELECT * FROM commentaire WHERE '.$column.'=:id');
-		$q->bindValue(':id', $idProprietaire, PDO::PARAM_INT);
+		$q->bindValue(':id', $idImage, PDO::PARAM_INT);
 		$q->execute();
 		while ($donnees = $q->fetch(PDO::FETCH_ASSOC)) {
 			$comments[] = new Commentaire($donnees);
 		}
 		return $comments;
-		
-		
 	}
 	
 }

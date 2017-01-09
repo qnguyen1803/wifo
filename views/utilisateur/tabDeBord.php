@@ -1,7 +1,3 @@
-<?php 
-	session_start(); 
-	include 'views/navigation.php';
-?>
 
 <section class="container">
 	<h2>Cette page est la page tableau de bord</h2>
@@ -13,10 +9,9 @@
 		 <nav></nav>
 	<?php } ?>
 
-	<p>Liste des favoris</p>
-	<p>Votre publications</p>
-	<p>Vos participations</p>
-	<p>Vos historiques (optionnel)</p>
+	<p>Votre publications : images + projets</p>
+	<p>Vos participations : les projets que je suis membre</p>
+	<p>La liste des demandes de participer à mon projet qui accompagne le bouton "accepter" et "refuser" </p>
 </section>
 
 

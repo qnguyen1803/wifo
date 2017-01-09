@@ -6,7 +6,7 @@
 
 class Categorie extends Entity
 {	
-	private private $_id, $_nom;
+	private $_id, $_nom;
 
 	// FUNCTIONS GET
 	public function getId(){return $this->_id;}

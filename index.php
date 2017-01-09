@@ -1,7 +1,7 @@
 <?php 
 
 	/**
-	* LE ROOTER DU SITE
+	* LE ROUTEUR DU SITE
 	*/
 
 	// recuperer le lien URL

@@ -1,84 +1,85 @@
-<?php include 'views/head.php'; ?>
-
-	<header>
-		<?php include 'views/navigation.php' ?>
-		
-	</header>
-	<section class="jumbotron">
-		<form id="contact_form" class="form-horizontal" role="form" method="post" action="">
+	<div class="register">
+		<form id="contact_form" class="form-horizontal" role="form" method="post">
 			<fieldset class="container">
 
 			<!-- form-name -->
-			<legend><h2>Contact us</h2></legend>
+			<legend><h3>Nous contacter</h3></legend>
 
-				<!-- text-input -->
+				<!-- Nom et prénom -->
 				<div class="form-group">
-					<label for="name" class="col-sm-2 control-label">Nom</label>
+					<label for="name" class="col-sm-2 control-label">Nom &amp; prénom * </label>
 					<div class="col-sm-8 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input type="text" class="form-control" name="name" id="name" placeholder="Votre nom et prénom" value="">
+							<input type="text" class="form-control" name="name" placeholder="Votre nom et prénom" value="">
 						</div>
 					</div>
 				</div>
 
-				<!-- text-input -->
+				<!-- Email -->
 				<div class="form-group">
-					<label for="email" class="col-sm-2 control-label">Email</label>
+					<label for="email" class="col-sm-2 control-label">Email * </label>
 					<div class="col-sm-8 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
-							<input type="email" class="form-control" name="email" id="email" placeholder="example@domain.com" value="">
+							<input type="email" class="form-control" name="email" placeholder="example@domain.com" value="">
 						</div>
 					</div>
 				</div>
 
-				<!-- text-input -->
+				<!-- Sujet -->
 				<div class="form-group">
-					<label for="subject" class="col-sm-2 control-label">Sujet</label>
+					<label for="subject" class="col-sm-2 control-label"> Sujet * </label>
 					<div class="col-sm-8 selectContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-menu-down"></i></span>
 							<select name="subject" class="form-control">
 								<option value="">Veuillez selectionner votre sujet</option>
-								<option>Question</option>
-								<option>Probleme</option>
-								<option>Blabla</option>
+								<option value="question"> Question </option>
+								<option value="problème"> Problème </option>
+								<option value="suggestion"> Suggestion </option>
+								<option value="autres"> Autres </option>
 							</select>
 						</div>
 					</div>
 				</div>
 
-				<!-- text-input -->
+				<!-- Content message -->
 				<div class="form-group">
-					<label for="message" class="col-sm-2 control-label">Message</label>
+					<label for="message" class="col-sm-2 control-label"> Message * </label>
 					<div class="col-sm-8 inputGroupContainer">
 						<div class="input-group col-xs-12">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
-							<textarea rows="5" class="form-control " placeholder="Contenu de votre message"></textarea>
+							<textarea rows="5" class="form-control " placeholder="Contenu de votre message" name="contentMessage"></textarea>
 						</div>
 					</div>
 				</div>
-
-				<!-- success - message -->
-				<div class="form-group">
-					<label class="col-sm-2 control-label"></label>
-					<div class="alert alert-success col-sm-8" role="alert" id="success-message">Votre message est pris en compte   
-						<i class="glyphicon glyphicon-thumbs-up"></i>
-						<p>Merci de votre message, nous allons vous contacter bientôt</p>
-					</div>
-				</div>
-
 
 				<!-- button -->
 				<div class="form-group">
 					<label class="col-sm-2 control-label"></label>
 					<div class="col-sm-8">
-						<button type="submit" class="btn btn-success"> Envoyer <span class="glyphicon glyphicon-send"></span></button>
+						<button type="submit" class="btn btn-warning" name="btn_message"> Envoyer <span class="glyphicon glyphicon-send"></span></button>
 					</div>
 				</div>
+
+
+				<!-- erreur et succes -->
+				<?php if ($this->vars['errorMessage'] != "") { ?>
+
+					<div class="alert alert-warning" role="alert"><strong> Attention ! </strong><?= $this->vars['errorMessage'] ?> 
+					</div>
+
+				<?php } elseif ($this->vars['succesMessage'] != "") { ?>
+					
+					<div class="alert alert-success" role="alert" id="success-message"> <strong> Félicitation ! </strong><?= $this->vars['succesMessage'] ?>   
+						<i class="glyphicon glyphicon-thumbs-up"></i>
+						<p>Merci de votre message, nous allons vous contacter bientôt</p>
+					</div>
+
+				<?php } ?>
+
+
 			</fieldset>
 		</form>
-	</section>
-
-	<?php require "views/loadScript.php"; ?>
+	</div> <!-- register -->

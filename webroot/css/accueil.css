@@ -1,0 +1,16 @@
+.copyleft{
+	position: relative;
+	width: 70%;
+	top: 10vh;
+	left: 15%;
+}
+
+.copyleft h2{
+	color: #337ABC;
+}
+
+.copyleft p{
+	font-size: 14px;
+	color: #8f8f8f;
+}
+

@@ -1,5 +1,4 @@
 $( document ).ready(function() {
-  console.log('haha');
 $('#cssmenu > ul > li > a').click(function() {
   $('#cssmenu li').removeClass('active');
   $(this).closest('li').addClass('active');	
@@ -23,9 +22,9 @@ $('#cssmenu > ul > li > a').click(function() {
 
 // Login Form
 $(function() {
-    var button = $('#loginButton');
-    var box = $('#loginBox');
-    var form = $('#loginForm');
+    var button = $('.loginButton');
+    var box = $('.loginBox');
+    var form = $('.loginForm');
     button.removeAttr('href');
     button.mouseup(function(login) {
         box.toggle();
@@ -35,7 +34,7 @@ $(function() {
         return false;
     });
     $(this).mouseup(function(login) {
-        if(!($(login.target).parent('#loginButton').length > 0)) {
+        if(!($(login.target).parent('.loginButton').length > 0)) {
             button.removeClass('active');
             box.hide();
         }

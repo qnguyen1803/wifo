@@ -1,0 +1,48 @@
+/*NAVIGATION PROFILE*/
+header{
+	width: 70%;
+}
+
+.border_around {
+	border: 1px solid #ccc;
+	font-size: 1em;
+}
+
+.navigation_profile {
+	margin: 6vh 20% 10vh 20%;
+}
+
+/*PAGE PARAMETRES*/
+.parametres {
+	margin-left: 10%;
+	width: 80%;
+	height: auto;
+}
+
+/*PAGE MODIFIER*/
+.modifier {
+	margin-left: 10%;
+	width: 80%;
+	height: auto;
+}
+
+/*PAGE PROFIL*/
+.profil {
+	margin-left: 15%;
+	width: 70%;
+}
+
+.profil .left{
+}
+
+.profil .right {
+	
+	border-radius: 5px;
+}
+
+.profil .right h2 {
+	color: #337ABC;
+	position: relative;
+}
+
+
