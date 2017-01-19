@@ -48,7 +48,7 @@ class Commentaire extends Entity
 		$this->_idImage = $idImage;
 	}
 
-	public function setProjet($idProjet){
+	public function setIdProjet($idProjet){
 		$this->_idProjet = $idProjet;
 	}
 

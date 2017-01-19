@@ -35,3 +35,11 @@
 	position: relative;
 	top: 3vh;
 }
+
+/*PAGE AUTHORS COLLECTION*/
+.authorsCollection .caption{
+	padding-top: 15px;
+}
+.authorsCollection .caption p{
+	font-size: 12px;
+}

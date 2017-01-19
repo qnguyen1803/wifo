@@ -86,6 +86,14 @@ class Accueil_c extends Controller{
 	}
 
 	/**
+	 * Fonction pour afficher la page FAQ
+	 * 
+	 */
+	public function faq(){
+		$this->view('faq');
+	}
+
+	/**
 	* Fonction lancer des recherches
 	*
 	*/
@@ -104,13 +112,15 @@ class Accueil_c extends Controller{
 
 					if ($_POST['search-param'] == "image") {
 						$tabResultsImg = $image_m->getList($motClef);
-
-					} else {
-						echo "projet";
+						$this->ajouterVar(array('tabResultsImg' => $tabResultsImg));
+					} elseif ($_POST['search-param'] == "projet"){
+						$tabResultsProj = $projet_m->getList($motClef);
+						var_dump($tabResultsProj);
+						$this->ajouterVar(array('tabResultsProj' => $tabResultsProj));
 					}
 
 				} else {
-					$search_error = "Le mot clé doit contenir 2 caracteres au minimum";
+					$search_error = "Le mot clef doit contenir 2 caracteres au minimum";
 				}
 			} else {
 				$search_error = "Veuillez ecrire votre mot clef";
@@ -118,7 +128,8 @@ class Accueil_c extends Controller{
 		}
 
 		$this->ajouterVar(array('motClef' => $motClef));
-		$this->ajouterVar(array('tabResultsImg' => $tabResultsImg));
+		
+		
 		$this->ajouterVar(array('search_error' => $search_error));
 		$this->view('search');
 	}
@@ -132,8 +143,8 @@ class Accueil_c extends Controller{
 	public function upload(){
 		// liste des catégories d'image
 		$categorie_m = $this->model('categorie_m');
-		$tabCategories = $categorie_m->getAll();
-		$this->ajouterVar(array('tabCategories'=>$tabCategories));
+		$tabCategoriesImg = $categorie_m->getAllCatImg();
+		$this->ajouterVar(array('tabCategoriesImg'=>$tabCategoriesImg));
 
 		// -- UPLOADER IMAGE
 		$image_m = $this->model('image_m');
@@ -183,7 +194,7 @@ class Accueil_c extends Controller{
 								}
 							}
 
-						// vérifier erreur lors du chargement
+						// vérifier l'erreur lors du chargement
 							foreach ($_FILES['image1']['error'] as $key => $value) {
 								if ($value > 0 ) $errorImage = "Erreur lors du transfert de l'image";
 							}
@@ -248,6 +259,11 @@ class Accueil_c extends Controller{
 
 
 		// -- UPLOADER PROJET
+
+		// liste des catégories de projets
+		$tabCategoriesPro = $categorie_m->getAllCatPro();
+		$this->ajouterVar(array('tabCategoriesPro'=>$tabCategoriesPro));
+
 		$projet_m = $this->model('projet_m');
 		$errorProject = "";
 		$succesProject = "";
@@ -268,7 +284,7 @@ class Accueil_c extends Controller{
 					$errorProject = "Ce titre de projet existe déjà. Veuillez choisir un autre titre";
 				} else {
 					// s'il y a une image d'illustration
-					if (strlen($_FILES['imageIllusProject']['name']) > 0) {
+					if (strlen($_FILES['imageIllusProject']['name']) > 4) {
 
 						// vérifier les extensions valides
 						$extensions_valides = ['jpg', 'png', 'gif','svg'];
@@ -291,13 +307,14 @@ class Accueil_c extends Controller{
 							$result2 = move_uploaded_file($_FILES['imageIllusProject']['tmp_name'], $destination_project);
 
 							// enregistrement du projet dans la bdd
+							$idCategorieProjet = htmlspecialchars($_POST['project_categorie']);
 							$descriptionProjet = htmlspecialchars($_POST['project_description']);
 							$dateDePubProjet = date('Y-m-d');
 							$compteur = '0/0';
 							$membres = strval($_SESSION['perso']->getId());
 							$idUser = $_SESSION['perso']->getId();
 
-							$projet = new Projet(['titre' => $titreProjet, 'description' => $descriptionProjet, 'dateDePub' => $dateDePubProjet, 'imageIllustration' => $destination_project, 'compteur' => $compteur, 'membres' => $membres, 'idUtilisateur' => $idUser]);
+							$projet = new Projet(['titre' => $titreProjet, 'idCategorie' => $idCategorieProjet, 'description' => $descriptionProjet, 'dateDePub' => $dateDePubProjet, 'imageIllustration' => $destination_project, 'compteur' => $compteur, 'membres' => $membres, 'idUtilisateur' => $idUser]);
 							$this->ajouterVar(array('projet' => $projet));	
 							$projet_m->add($projet);
 							$succesProject = "Votre projet est bien enregistré";
@@ -310,14 +327,17 @@ class Accueil_c extends Controller{
 			}
 		}
 
-
-
 		$this->ajouterVar(array('errorProject' => $errorProject));
 		$this->ajouterVar(array('succesProject' => $succesProject));
 		$this->ajouterVar(array('errorImage' => $errorImage));
 		$this->ajouterVar(array('succesImage' => $succesImage));
 		$this->view('upload');	
 	}// fin function upload
+
+
+	public function about(){
+		$this->view('about');
+	}
 }
 
 

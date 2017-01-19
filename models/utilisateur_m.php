@@ -84,9 +84,19 @@ class Utilisateur_m extends Model{
 		return $resultsUsers;
 	}
 
-
+	/**
+	* Fonction qui retourne la liste de tous 
+	* les utilisateurs 
+	* l'affichage dans la page authorsCollection
+	* @return resultsUsers[]
+	*/
 	public function getList(){
-
+		$resultsUsers = [];
+		$q = $this->pdo->query('SELECT * FROM utilisateur');
+		while ($donnee = $q->fetch(PDO::FETCH_ASSOC)) {
+			$resultsUsers[] = new Utilisateur($donnee);
+		}
+		return $resultsUsers;
 	}
 
 	public function delete(Utilisateur $user){
@@ -94,6 +104,11 @@ class Utilisateur_m extends Model{
 		$q->execute();
 	}
 
+	/**
+	 * Fonction pour updater les infos de l'utilisateur
+	 * @param $column, $value, Utilisateur $user
+	 * 
+	 */
 	public function update($column, $value, Utilisateur $user){
 		$q = $this->pdo->prepare('UPDATE utilisateur SET '.$column.'=:value WHERE id=:id' );
 		$q->bindValue(':value', $value );

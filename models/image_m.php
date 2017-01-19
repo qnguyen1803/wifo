@@ -40,7 +40,7 @@ class Image_m extends Model{
 
 
 	/**
-	* Fontion qui retourne une image pour la page ImadeDetail
+	* Fontion qui retourne une image pour la page ImageDetail
 	* @param $id
 	* @return new Image
 	* 
@@ -87,6 +87,24 @@ class Image_m extends Model{
 	}
 
 	/**
+	 * Fonction pour get liste des images d'un auteur
+	 *
+	 */
+	public function getListImagesOfPerson($idUtilisateur){
+		$resultsImage = [];
+		$q = $this->pdo->prepare('SELECT * FROM image WHERE idUtilisateur = :idUtilisateur');
+		$q->bindValue(':idUtilisateur', $idUtilisateur, PDO::PARAM_INT);
+		$q->execute();
+
+		while ($donnee = $q->fetch(PDO::FETCH_ASSOC)) {
+			$resultsImage[] = new Image($donnee);
+		}
+		return $resultsImage;
+	}
+
+
+
+	/**
 	 * Fonction qui retourne toutes les images pour la page 
 	 * imageCollection
 	 * @return tableau de toutes les images
@@ -122,11 +140,21 @@ class Image_m extends Model{
 
 	/**
 	 * Fonction pour updater les infos d'une image
-	 *
+	 * @param $column, $value, $idImg
 	 */
 	public function update($column, $value, $idImg){
 		$q = $this->pdo->prepare('UPDATE image SET '.$column. '=:value WHERE id = :id');
 		$q->bindValue(':value', $value);
+		$q->bindValue(':id', $idImg, PDO::PARAM_INT);
+		$q->execute();
+	}
+
+	/**
+	 * Fonction pour effacer une image
+	 * @param 
+	 */
+	public function delete($idImg){
+		$q = $this->pdo->prepare("DELETE FROM image WHERE id = :id");
 		$q->bindValue(':id', $idImg, PDO::PARAM_INT);
 		$q->execute();
 	}

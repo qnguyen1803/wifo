@@ -50,12 +50,12 @@
 				</div>
 				<br>
 
-	<!--/////////////////////////// IMAGES FORM ////////////////////////-->
+	<!--///////////////////// IMAGES FORM  ////////////////-->
 				<form id="t1" method="post" enctype="multipart/form-data">
 				<!-- image_title -->
 					<div class="form-group">
 						<label for="exampleInputinfo">Titre de l'image *</label>
-						<input type="titre" class="form-control" name="image_title" >
+						<input type="text" class="form-control" name="image_title" >
 					</div>
 
 				<!-- image_categorie -->
@@ -63,7 +63,7 @@
 						<div class="selectContainer">
 							<label for="image_categorie">Catégorie *</label>
 							<select name="image_categorie" class="form-control selectpicker">
-								<?php foreach ($this->vars['tabCategories'] as $key => $value) { ?>
+								<?php foreach ($this->vars['tabCategoriesImg'] as $key => $value) { ?>
 									<option value="<?=$value->getId()  ?>"><?=$value->getNom()  ?></option>
 								<?php } ?>
 						    </select>		
@@ -107,6 +107,18 @@
 						<input type="titre" class="form-control" name="project_title" >
 					</div>
 
+					<!-- project_categorie -->
+					<div class="form-group">
+						<div class="selectContainer">
+							<label for="project_categorie">Catégorie *</label>
+							<select name="project_categorie" class="form-control selectpicker">
+								<?php foreach ($this->vars['tabCategoriesPro'] as $key => $value) { ?>
+									<option value="<?=$value->getId()  ?>"><?=$value->getNom()  ?></option>
+								<?php } ?>
+						    </select>		
+						</div>
+					</div>
+
 					<!-- image_description -->
 					<div class="form-group">
 	    				<label for="name"> Description *</label>
@@ -116,14 +128,14 @@
 	  				<!-- select imageIllustration -->
 					<div class="form-group">
 						<label for="fileListProjet">
-							Image d'illustration du projet
+							Image d'illustration du projet </label>
 							<p><i>Une image unique</i></p>
 							<p><i>La taille maximum pour l'image est 4Mb</i></p>
 							<p><i>Vous pouvez choisir l'extension jpg, png, gif, svg</i></p>
 						</label>
 
 						<div class="form-group">
-							<input class="file" type="file" multiple="multiple" data-preview-file-type="any" data-upload-url="#" name="imageIllusProject" accept="image/*">
+							<input class="file" type="file" data-preview-file-type="any" data-upload-url="#" name="imageIllusProject" accept="image/*">
 						</div>
 					</div>
 					

@@ -6,7 +6,7 @@
 		// si le personnage n'est pas encore connecté 
 		if (!isset($_SESSION['perso'])){?>
 
-			<form id="connexion" class="form-horizontal" role="form" data-toggle='validator' method="post" action="">
+			<form id="connexion" class="form-horizontal" role="form" method="post" action="">
 		<!-- WEBROOT.'/'.CONTROLLER.'/tabDeBord' -->
 			
 				<legend><h3>Connexion</h3></legend>

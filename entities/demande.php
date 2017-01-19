@@ -3,47 +3,34 @@
 * 
 */
 class Demande extends Entity{
-	private $_id, $_idUtilisateur, $_idProjet, $_message, $_etat;
+	private $_id, $_idUtilisateur, $_idProjet, $_message, $_reponse;
 
 	public function getId(){return $this->_id;}
-	public function getEtat(){return $this->_titre;}
 	public function getMessage(){return $this->_message;}
 	public function getIdProjet(){return $this->_idProjet;}
 	public function getIdUtilisateur(){return $this->_idUtilisateur;}
+	public function getReponse(){return $this->_reponse;}
 
 
 	//FUNCTIONS SET
 	public function setId($id){
-		$id = (int)$id;
-		if ($id > 0) {
-			$this->_id = $id;
-		}	
-	}
-
-	public function setEtat($etat){
-		if (is_bool($etat)) {
-			$this->_etat = $etat;
-		} 
+		$this->_id = $id;
 	}
 
 	public function setMessage($message){
-		if (is_string($message)) {
-			$this->_message = $message;
-		}
+		$this->_message = $message;
 	}
 
 	public function setIdProjet($idProjet){
-		$idProjet = (int)$idProjet;
-		if ($idProjet > 0) {
-			$this->_idProjet = $idProjet;
-		}
+		$this->_idProjet = $idProjet;
 	}
 
 	public function setIdUtilisateur($idUtilisateur){
-		$idUtilisateur = (int)$idUtilisateur;
-		if ($idUtilisateur > 0) {
-			$this->_idUtilisateur = $idUtilisateur;
-		}
+		$this->_idUtilisateur = $idUtilisateur;
+	}
+
+	public function setReponse($reponse){
+		$this->_reponse = $reponse;
 	}
 }// fin class
  ?>

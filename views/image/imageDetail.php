@@ -43,21 +43,14 @@
 						&nbsp;
 						<button type="submit" class="btn btn-default" name="btn_download">Télécharger</button>
 					</form>	<!-- FORM TO DOWNLOAD -->
-
-
-				<!-- <button class="btn btn-info glyphicon glyphicon-thumbs-up"> Aimer <span class="badge badge-info"><?= $this->vars['imageDetail']->getNote()  ?> </span></button> -->
-				
-
-
 				</div><!-- END Info IMAGE -->
-
-			<div class="clearfix"> </div>
+				 <div class="clearfix"> </div>
 		  </div>
-		<div class="tags">
-			<h4 class="tag_head">Description</h4>
+		 
+		<div class="rows">
+			<h4>Description</h4>
 			<div class="well">
 				<div class="clearfix"><?=$this->vars['imageDetail']->getDescription() ?> </div>
-			
 		 	</div>
 		</div>
 

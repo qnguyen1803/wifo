@@ -16,7 +16,8 @@ class Image_c extends Controller{
 
 		// liste de tous les catégories
 		$categorie_m = $this->model('categorie_m');
-		$tabCategories = $categorie_m->getAll();
+		$tabCategories = $categorie_m->getAllCatImg();
+
 
 		$this->ajouterVar(array('tabCategories' => $tabCategories));
 		$this->ajouterVar(array('tabImages' => $tabImages));
@@ -68,7 +69,7 @@ class Image_c extends Controller{
 				$tabImages = $this->model->getListCate(15);
 			} elseif ($_POST['categorie'] == 'Interieurs') {
 				$tabImages = $this->model->getListCate(16);
-			} elseif ($_POST['categorie'] == 'Divers') {
+			} elseif ($_POST['categorie'] == 'Sciences') {
 				$tabImages = $this->model->getListCate(17);
 			} elseif ($_POST['categorie'] == 'Modèle') {
 				$tabImages = $this->model->getListCate(18);
@@ -82,7 +83,7 @@ class Image_c extends Controller{
 				$tabImages = $this->model->getListCate(22);
 			} elseif ($_POST['categorie'] == 'Religion') {
 				$tabImages = $this->model->getListCate(23);
-			} elseif ($_POST['categorie'] == 'Sciences') {
+			} elseif ($_POST['categorie'] == 'Divers') {
 				$tabImages = $this->model->getListCate(24);
 			}
 		}
@@ -227,6 +228,60 @@ class Image_c extends Controller{
 				echo "Veuillez chosir l'extension que vous voulez télécharger";
 			}
 		}
+	}
+
+	/**
+	 * Fontion pour afficher la page modifier Image dans la BDD
+	 *
+	 */
+	public function modifierImage(){
+		$categorie_m = $this->model('categorie_m');
+		$tabCategories = $categorie_m->getAll();
+
+		// UPLOADER IMAGE
+		$errorImage ="";
+		$succesImage ="";
+
+		if (isset($_POST['btn_upload_img'])) {
+			// vérifier si tous les champs sont rempli
+
+			//uploader le titre
+			if (!empty($_POST['image_title'])) {
+				$titre = htmlspecialchars($_POST['image_title']);
+				$donnee = $this->model->exists($titre);
+				if ($donnee) {
+					$errorImage = "Ce titre existe déjà. Veuillez choisir un  autre titre";
+				} else {
+					$this->model->update('titre', $titre, $_GET['params']);
+					$succesImage = "Votre changement de titre est bien enregistré";
+				}
+			}
+
+			// uploader la description
+			if (!empty($_POST['image_description'])) {
+				 $description = htmlspecialchars($_POST['image_description']);
+				 $this->model->update('description', $description, $_GET['params']);
+				 $succesImage = "Votre changement de description est bien enregistré";
+			}
+
+			// uploader la catégorie
+			if (!empty($_POST['image_categorie'])) {
+				$idCategorie = (int)($_POST['image_categorie']);
+				$this->model->update('idCategorie',$idCategorie, $_GET['params'] );
+				$succesImage = "Votre changement de categorie est bien enregistré";
+			}
+		}
+
+		// recup id de l'image
+		if (isset($_GET['params'])) {
+			$imageModified = $this->model->get($_GET['params']);
+			$this->ajouterVar(array('imageModified' => $imageModified));
+		}
+
+		$this->ajouterVar(array('errorImage' => $errorImage));
+		$this->ajouterVar(array('succesImage' => $succesImage));
+		$this->ajouterVar(array('tabCategories'=>$tabCategories ));
+		$this->view('modifierImage');
 	}
 	
 }

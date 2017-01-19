@@ -1,8 +1,8 @@
-<link rel="stylesheet" type="text/css" href="<?= WEBROOT.'webroot/css/accueil.css'?>">
+
 	 <div class="banner">
 		<div class="container">
 			<div class="span_1_of_1">
-			    <h2>Photos, illustrations by<br> Creatives all over the world.</h2>
+			    <h2 style=" opacity: 0.8; color: #010066;">Images libres - Projets libres <br> Communautés libres</h2>
 
 			    <div class="search">
 		            <!-- search form -->
@@ -37,10 +37,10 @@
 		<hr>
 		<div class="row">
 			<?php foreach ($this->vars['listImagesRecents'] as $key => $value) { ?>
-				<div class="col-md-3">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 			    	<div class="thumbnail">
 			        	<a href="<?=WEBROOT.'image/imageDetail/'.$value->getId()  ?>" target="_blank">
-			         	 	<img src="<?=WEBROOT.$this->vars['tabImgPaths'][$key]?>" alt="Lights" style="width:100%">
+			         	 	<img src="<?=WEBROOT.$this->vars['tabImgPaths'][$key]?>" alt="Lights" style="width:100%; height: 180px;">
 					        <div class="caption">
 					        	<strong style="color: blue"><?=$value->getTitre()  ?> </strong><i> publié par </i>
 					        	<strong><?=$this->vars['tabImagesAuthor'][$key]->getPseudo() ?></strong>
@@ -58,10 +58,10 @@
 		<hr>
 		<div class="row">
 			<?php foreach ($this->vars['listProjetsRecents'] as $key => $value) { ?>
-				<div class="col-md-3">
+				<div class="col-xs-12 col-sm-6 col-md-6 col-lg-3">
 			    	<div class="thumbnail">
 			        	<a href="<?=WEBROOT.'projet/projetDetail/'.$value->getId()  ?>" target="_blank">
-			         	 	<img src="<?=WEBROOT.$value->getImageIllustration()?>" alt="Lights" style="width:100%">
+			         	 	<img src="<?=WEBROOT.$value->getImageIllustration()?>" alt="Lights" style="width:100%; height: 180px;">
 					        <div class="caption">
 					        	<strong style="text-align: center;"><?=$value->getTitre()  ?> </strong>
 					        	<i> publié par </i>
@@ -80,15 +80,13 @@
 		<hr>
 		<div class="row">
 			<?php foreach ($this->vars['listUsersRecents'] as $key => $value) { ?>
-				<div class="col-sm-3">
-					<div class="col-md-6" >
-				    	<div class="thumbnail">
-				    		<img class="img-responsive user-photo" src="<?=WEBROOT.$value->getAvatar() ?>">
-				      	</div>
+				<div class="col-sm-6 col-md-3" >
+					<div class="col-md-6 text-center" >
+				    	<img class="img-circle img-responsive img-center" src="<?=WEBROOT.$value->getAvatar()?>" style="width: 150px; height: 120px;" alt="">
 			      	</div>
-			      	<div class="col-md-6" style="border: 1px solid #ccc;">
+			      	<div class="col-md-6 text-center">
 			      		<p><strong>Wifo - user</strong></p>
-			      		<a href="<?=WEBROOT.'profil/index/'.$value->getPseudo() ?>"><?=$value->getPseudo() ?></a>
+			      		<a href="<?=WEBROOT.'profil/index/'.$value->getPseudo() ?>"> <i> <?=$value->getPseudo() ?> </i></a>
 			      		<p><strong> Intégration </strong></p>
 			      		<p><?=$value->getDateCreation() ?></p>
 			      	</div>

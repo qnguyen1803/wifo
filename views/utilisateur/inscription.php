@@ -1,11 +1,12 @@
 <link rel="stylesheet" type="text/css" href="<?= WEBROOT.'webroot/css/utilisateur.css'?>">
-<div class="register">
+<div class="container">
+<br><br><br>
 	<form id="inscription" class="form-horizontal" role="form" data-toggle='validator' method="post" action="<?=WEBROOT.'utilisateur/inscription' ?>">
 			
 		<!-- ///////////////////////////
 				S'INSCRIRE
 		/////////////////////////////--> 
-		<fieldset class="container col-sm-5">
+		<fieldset class="col-sm-5">
 			<legend><h3 class="col-sm-3">Inscription</h3></legend> 
 
 				<!-- PSEUDO -->
@@ -47,7 +48,7 @@
 		<!-- ///////////////////////////
 			CREER VOTRE PROFIL
 		/////////////////////////////--> 
-		<fieldset class="container col-sm-6 createProfil">
+		<fieldset class="col-sm-6 createProfil">
 			<legend><h3> Créer votre profil (optionnel)</h3></legend>
 			<div class="left col-sm-6">
 				<!-- NOM -->
@@ -144,11 +145,12 @@
 			<?php } ?>
 
 		<!-- ////// BUTTON ////// -->
-		<div class="form-group button">
-			<label></label>
-			<div class="col-sm-12">
+		<div class="form-group col-sm-12">
+			<br><br>
+			<div class="">
 				<button type="submit" class="btn btn-warning col-sm-12" name="btn_inscription" id="inscription_submit"> S'inscrire </button>
 			</div>
+			<br><br><br><br>
 		</div>
 	</form>
 </div>

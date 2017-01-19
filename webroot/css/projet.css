@@ -1,0 +1,40 @@
+.popupWindow{
+	display: none;
+	z-index: 1000;
+	top: 11vh;
+	position: fixed;
+	overflow: auto;
+	background-color: rgba(0,0,0,0.4);
+}
+
+.popupWindowContent{ 
+  color: #fff;
+  margin-top: 10px; 
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+#postuler_form{
+  margin-top: 3vh;
+}
+
+/* Add Animation */
+@-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+}
+
+@keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+}
+.close {
+  position: absolute;
+  top: 10px;
+  right: 3%;
+  color: red;
+  font-weight: bold;
+  font-size: 4em;
+}

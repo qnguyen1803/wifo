@@ -14,3 +14,24 @@
 	color: #8f8f8f;
 }
 
+.about{
+	position: relative;
+	width: 70%;
+	top: 10vh;
+	left: 15%;
+}
+
+.about h2{
+	color: #337ABC;
+}
+
+.about p{
+	font-size: 14px;
+	color: #8f8f8f;
+}
+
+.img-center{
+	margin: 0 auto;
+}
+
+

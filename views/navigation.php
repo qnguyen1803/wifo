@@ -1,88 +1,68 @@
 <?php 	include "views/head.php"; ?>
-<div class="header">
-      <div class="container">
-
-  	     <div class="logo">
-			<h1><a href="<?=WEBROOT.'accueil/index' ?>"><img src="<?=WEBROOT.'webroot/images/logo.png' ?>"/> WIFO</a></h1>
-		 </div>
-
-		 <!-- MENU PRINCIPAL -->
-		 <div class="top_left">
-			<ul>
-				<li><a href="<?=WEBROOT.'utilisateur/authorsCollection'?>">Auteur</a></li>
-				<li><a href="<?=WEBROOT.'image/imageCollection'?>">Image</a></li>
-				<li><a href="<?=WEBROOT.'projet/projetCollection'?>">Projet</a></li>
-				<li><a href="<?=WEBROOT.'accueil/upload'?>">Publier votre projet / image</a></li>
-				<li><a href="<?=WEBROOT.'accueil/contact'?>">Nous contacter</a></li>
-				<li><a href="<?=WEBROOT.'accueil/copyleft'?>">Mentions légales</a></li>
-			<ul>
-		 </div>
-		 <div class="top_center"><a href="<?=WEBROOT.'accueil/search'  ?>"><span class="glyphicon glyphicon-search"></span></a></div>
-		 
-		 <div class="top_right">
-		 	<?php if (isset($_SESSION['perso'])) { ?>
-		 	<!-- BONJOUR USER -->
-		 	<ul>
-				<li>
-					Bienvenue 
-				</li>|
-			<!-- CONNEXION -->
-				<li class="login" >
-					<div class="loginContainer">
-					 	<a href="<?=WEBROOT.'utilisateur'.'/'.'connexion'?>" class="loginButton"><span style="color: blue"><?=$_SESSION['perso']->getPseudo()  ?></span></a>
-						 
-						<div class="loginBox">
-							<div class="menu_dropdown">
-								<a href="<?=WEBROOT.'utilisateur/tabDeBord'  ?>" class="row_dropdown"> Tableau de bord </a>
-								<a href="<?=WEBROOT.'profil/index/'.$_SESSION['perso']->getPseudo() ?>" class="row_dropdown"> Votre profil </a>
-								<a href="<?=WEBROOT.'utilisateur/deconnexion' ?>" class="row_dropdown"> Deconnexion</a>
-							</div>
-					    </div>
-				    </div>
-				</li>
-		   	</ul>
+<style type="text/css">
+	.navbar-brand {
+	  padding: 0px;
+	}
+	.navbar-brand>img {
+	  height: 100%;
+	  padding: 15px;
+	  width: auto;
+	}
 	
-		 	<?php } else { ?> 
+</style>
+<div style="background-color: #EEE2C3">
+	<br>
 
-		 	<!-- INSCRIPTION -->
-		   	<ul>
-				<li>
-					<a href="<?=WEBROOT.'utilisateur'.'/'.'inscription'?>">Inscription</a>
-				</li>|
-			<!-- CONNEXION -->
-				<li class="login" >
-					 <div class="loginContainer">
-					 	<a href="<?=WEBROOT.'utilisateur'.'/'.'connexion'?>" class="loginButton"><span>Connexion</span></a>
-						 
-						<div class="loginBox">
 
-						  <!-- CONNEXION FORM -->
-							  <form class="loginForm" method="post" action="<?=WEBROOT.'utilisateur/connexion' ?>">
-				                <fieldset class="body">
-				                	<fieldset>
-				                          <label for="email">Email</label>
-				                          <input type="email" name="email" id="email">
-				                    </fieldset>
-				                    <fieldset>
-				                            <label for="password">Password</label>
-				                            <input type="password" name="mdp" id="password">
-				                     </fieldset>
-				                    <input type="submit" class="login" name="btn_connexion" value="Se connecter">
-				                	<label for="checkbox"><input type="checkbox" id="checkbox"> <i>Remember me</i></label>
-				            	</fieldset>
-				                 <span><a href="#">Forgot your password?</a></span>
-							   </form>
+<div class="container example4" >
+  <nav class="navbar navbar-default" style="background-color: transparent; border-color: transparent;">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar4">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="<?=WEBROOT.'accueil/index'?>" style="color: #660066;"><img style="width: 90px; height: 70px; padding-top: 0px;" src="<?=WEBROOT.'webroot/images/logo.png'?>" alt="Home">
+        </a>
+      </div>
+      <div id="navbar4" class="navbar-collapse collapse">
+      	<ul class="nav navbar-nav navbar-left">
+          <li><a href="<?=WEBROOT.'utilisateur/authorsCollection'?>">Auteurs</a></li>
+          <li><a href="<?=WEBROOT.'image/imageCollection'?>">Images</a></li>
+          <li><a href="<?=WEBROOT.'projet/projetCollection'?>">Projets</a></li>
+          <li><a href="<?=WEBROOT.'accueil/upload'?>">Publier votre projet/image</a></li>
+          <li><a href="<?=WEBROOT.'accueil/copyleft'?>"> Copyleft </a></li>
+          <li><a href="<?=WEBROOT.'accueil/search'  ?>"><span class="glyphicon glyphicon-search"></span></a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+        	<?php if (isset($_SESSION['perso'])) { ?>
+	          <li class="dropdown">
 
-							   <!-- CONNEXION FORM END ! -->
-					        </div>
-				      </div>
-				  </li>
-		   	</ul>
-		   	<?php } ?>
-	     </div>
-		 <div class="clearfix"></div>
-		</div>
-	</div>
+	            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><?=$_SESSION['perso']->getPseudo()  ?> <span class="caret"></span></a>
+
+	            <ul class="dropdown-menu" role="menu">
+	              <li><a href="<?=WEBROOT.'utilisateur/tabDeBord' ?>">Tableau de bord</a></li>
+	              <li><a href="<?=WEBROOT.'profil/index/'.$_SESSION['perso']->getPseudo() ?>">Votre profil</a></li>
+	              <li class="divider"></li>
+	              <li><a href="<?=WEBROOT.'utilisateur/deconnexion' ?>">Deconnexion</a></li>
+	            </ul>
+
+	          </li>
+	        <?php } else { ?>
+	        	<li><a href="<?=WEBROOT.'utilisateur'.'/'.'inscription'?>">Inscription</a></li>
+	        	<li><a href="<?=WEBROOT.'utilisateur'.'/'.'connexion'?>">Connexion</a></li>
+
+	        <?php } ?>
+        </ul>
+      </div>
+      <!--/.nav-collapse -->
+    </div>
+    <!--/.container-fluid -->
+  </nav>
+</div>
+</div>
 
 	<script src="<?=WEBROOT.'webroot/js/menu_jquery.js' ?>"></script>
 

@@ -118,29 +118,147 @@ class Utilisateur_c extends Controller{
 	 *
 	 */
 	public function deconnexion(){
-		session_start();
 		session_destroy();
 		header('location:'.WEBROOT);
 		exit;
 	}
 
 	/**
-	 * Fonction tabDeBord
+	 * Fonction tabDeBord pour voir historiques des actions 
+	 * de l'utilisateur
+	 * Les listes de demandes postulées et à répondre
 	 *
 	 */
 	public function tabDeBord(){
+		$demande_m = $this->model('demande_m');
+		$projet_m = $this->model('projet_m');
+		$image_m = $this->model('image_m');
+		$categorie_m = $this->model('categorie_m');
+
+	//--- LISTE DES IMAGES PUBLIEES ---
+		//liste des Images
+		$tabImagesOfPerson = $image_m->getListImagesOfPerson($_SESSION['perso']->getId());
+		// liste des Categories
+		$tabCategories = array();
+		foreach ($tabImagesOfPerson as $key => $value) {
+			$categorie = $categorie_m->get($value->getIdCategorie());
+			array_push($tabCategories, $categorie->getNom());	
+		}
+
+		// liste des Path de l'image
+		$tabPaths = array();
+		foreach ($tabImagesOfPerson as $key => $value) {
+			$path = explode(',', $value->getRepository());
+			array_push($tabPaths, $path[0]);
+		}
+
+		// modifier ou supprimer une image
+		if (isset($_POST['btnSupprimerImage'])) {
+			$image_m->delete((int)$_POST['btnSupprimerImage']);
+		} 
+		
+
+	//--- LISTE DES PROJETS PUBLIES ---
+		//liste des Projets
+		$listProjectOfThisPerson = $projet_m->getListProjectsOfUser($_SESSION['perso']->getId());
+		$tabImagesIllustration = array();
+		foreach ($listProjectOfThisPerson as $key => $value) {
+			$image = $value->getImageIllustration();
+			array_push($tabImagesIllustration, $image);
+		}
+
+		// modifier ou supprimer un projet
+		if (isset($_POST['btnSupprimerProjet'])) {
+			// supprimer le projet qui concerne
+			$projet_m->delete((int)$_POST['btnSupprimerProjet']);
+			// supprimer la liste de toutes les demandes concernées
+			$demande_m->deleteListDemandesOfProjet((int)$_POST['btnSupprimerProjet']);
+		} 
+
+	//--- LISTE DES DEMANDES ENVOYES ---
+		//liste des demandes
+		$tabDemandesEnvoyees = $demande_m->getListDemandesEnvoyees($_SESSION['perso']->getId());
+		// liste des noms de projet
+		$tabProjets = array();
+		foreach ($tabDemandesEnvoyees as $key => $value) {
+			$project = $projet_m->get($value->getIdProjet());
+			array_push($tabProjets, $project);
+		}
+
+
+	//LISTE DES DEMANDES A REPONDRE 
+		$tabDemandesARepondre = array();
+		foreach ($listProjectOfThisPerson as $key => $value) {
+			$demandesARepondrePourUnProjet = $demande_m->getListDemandesRepondre($value->getId());
+			$tabDemandesARepondre = array_merge($tabDemandesARepondre, $demandesARepondrePourUnProjet);
+		}
+		
+		// afficher la liste Candidat
+		$tabUsersCandidate = array();
+		foreach ($tabDemandesARepondre as $key => $value) {
+			$user = $this->model->get($value->getIdUtilisateur());
+			array_push($tabUsersCandidate,$user);
+		}
+
+		//afficher la liste Des Projets
+		$tabProjects = array();
+		foreach ($tabDemandesARepondre as $key => $value) {
+			$project = $projet_m->get($value->getIdProjet());
+			array_push($tabProjects, $project);
+		}
+
+		// les boutons pour répondre à une demande
+		// dans la liste des demandes à répondre
+		if (isset($_POST['btnAccept']) || isset($_POST['btnRefuse'])) {
+
+			if (isset($_POST['btnAccept'])) {
+				$idDemande = (int) $_POST['btnAccept'];
+				$demande = $demande_m->get($idDemande);
+				$demande_m->update('reponse', 1 , $demande);
+				//ajouter cette personne au projet
+
+				$idCandidat = $demande->getIdUtilisateur();
+				$projetUpdateMembres = $projet_m->get($demande->getIdProjet());
+				$oldersMembers = $projetUpdateMembres->getMembres(); 
+				$newMembers = $oldersMembers.",".strval($idCandidat);
+				$projet_m->update('membres', $newMembers, $demande->getIdProjet());
+
+			} else if (isset($_POST['btnRefuse'])) {
+				$idDemande = (int) $_POST['btnRefuse'];
+				$demande = $demande_m->get($idDemande);
+				$demande_m->update('reponse', 0 , $demande);
+			}
+		}
+
+		// for images
+		$this->ajouterVar(array('tabImagesOfPerson' => $tabImagesOfPerson));
+		$this->ajouterVar(array('tabPaths' => $tabPaths));
+		$this->ajouterVar(array('tabCategories' => $tabCategories));
+		//for project
+		$this->ajouterVar(array('listProjectOfThisPerson' => $listProjectOfThisPerson));
+		$this->ajouterVar(array('tabImagesIllustration' => $tabImagesIllustration));
+		//for demandes envoyées
+		$this->ajouterVar(array('tabDemandesEnvoyees' => $tabDemandesEnvoyees));
+		$this->ajouterVar(array('tabProjets' => $tabProjets));
+		$this->ajouterVar(array('tabProjects' => $tabProjects));
+		
+		//for demande à répondre
+		$this->ajouterVar(array('tabDemandesARepondre' => $tabDemandesARepondre));
+		$this->ajouterVar(array('tabUsersCandidate' => $tabUsersCandidate));
 		$this->view('tabDeBord');
 	}
 
-	public function profil(){
-		$this->view('profil');
-	}
-
+	/**
+	 * Fonction authorsCollection pour afficher la page
+	 * authorsCollection
+	 *
+	 */
 	public function authorsCollection(){
+		$tabUsers = $this->model->getList();
+		$this->ajouterVar(array('tabUsers' => $tabUsers));
 		$this->view('authorsCollection');
 	}
 
-	
 }// fin class
  
 ?>

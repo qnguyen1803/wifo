@@ -6,12 +6,13 @@
 
 class Projet extends Entity
 {	
-	private $_id, $_titre, $_description, $_dateDePub, $_imageIllustration, $_compteur, $_membres, $_idUtilisateur;
+	private $_id, $_titre, $_idCategorie, $_description, $_dateDePub, $_imageIllustration, $_compteur, $_membres, $_idUtilisateur;
 	
 
 	// FUNCTIONS GET
 	public function getId(){return $this->_id;}
 	public function getTitre(){return $this->_titre;}
+	public function getIdCategorie(){return $this->_idCategorie;}
 	public function getDescription(){return $this->_description;}
 	public function getDateDePub(){return $this->_dateDePub;}
 	public function getImageIllustration(){return $this->_imageIllustration;}
@@ -29,9 +30,11 @@ class Projet extends Entity
 	}
 
 	public function setTitre($titre){
-		if (is_string($titre)) {
-			$this->_titre = $titre;
-		} 
+		$this->_titre = $titre;
+	}
+
+	public function setIdCategorie($idCategorie){
+		$this->_idCategorie = $idCategorie;
 	}
 
 	public function setDescription($description){

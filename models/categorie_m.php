@@ -30,5 +30,34 @@
 			return $resultsCate;
 		}
 
+		/** 
+		 * Fonction qui retourne la liste des catégories
+		 * pour les Images
+		 * @return $results[]
+		 */
+		public function getAllCatImg(){
+			$results = [];
+			$q= $this->pdo->query('SELECT * FROM categorie LIMIT 0,24');
+			while ($donnee = $q->fetch(PDO::FETCH_ASSOC)) {
+				$results[] = new Categorie($donnee);
+			}
+			return $results;
+		}
+
+		/**
+		 * Fonction qui retourne la liste des catégories
+		 * pour les projets
+		 * @return $results[]
+		 *
+		 */
+		public function getAllCatPro(){
+			$results = [];
+			$q= $this->pdo->query('SELECT * FROM categorie LIMIT 25,8');
+			while ($donnee = $q->fetch(PDO::FETCH_ASSOC)) {
+				$results[] = new Categorie($donnee);
+			}
+			return $results;
+		}
+
 	} //class Categorie
  ?>
